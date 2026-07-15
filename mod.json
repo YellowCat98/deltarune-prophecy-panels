@@ -1,0 +1,30 @@
+{
+	"geode": "5.8.1",
+	"gd": {
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
+	},
+	"id": "yellowcat98.deltarune_panels",
+	"name": "Deltarune Panels",
+	"version": "v1.0.0",
+	"developer": "YellowCat98",
+	"description": "",
+	"early-load": true,
+	"dependencies": {
+		"geode.node-ids": ">=v1.23.3"
+	},
+	"resources": {
+		"sprites": [
+			"resources/*.png"
+		],
+		"fonts": {
+			"prophecyFont": {
+				"path": "resources/prophecyFont.ttf",
+				"charset": "32-126,8226",
+				"size": 64
+			}
+		}
+	}
+}
