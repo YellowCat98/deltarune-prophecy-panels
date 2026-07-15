@@ -6,7 +6,7 @@
 using namespace geode::prelude;
 using namespace DeltaruneProphecy;
 
-bool ProphecyPanel::init(const std::string& text) {
+bool ProphecyPanel::init(CCSprite* sprite, const std::string& text) {
 	if (!CCNode::init()) return false;
 	this->setAnchorPoint({0.5f, 0.5f});
 	float animationDuration = 1.25f;
@@ -17,15 +17,14 @@ bool ProphecyPanel::init(const std::string& text) {
 	auto evenMoreAnimatedInsideAnimated = CCNode::create();
 	evenMoreAnimatedInsideAnimated->setID("more-animaeted");
 
-	auto spr = CCSprite::create("test_spr.png"_spr);
 	auto params = ccTexParams{GL_NEAREST, GL_NEAREST, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE};
-	spr->getTexture()->setTexParameters(&params);
-	auto sprRect = spr->getTextureRect();
+	sprite->getTexture()->setTexParameters(&params);
+	auto sprRect = sprite->getTextureRect();
 
-	auto fancySpr = ProphecySprite::create(spr, false);
+	auto fancySpr = ProphecySprite::create(sprite, false);
 	fancySpr->setID("fancy-sprite");
 
-	auto shadow1 = ProphecySprite::create(spr, false);
+	auto shadow1 = ProphecySprite::create(sprite, false);
 	shadow1->setID("shadow-1");
 	shadow1->getPanel()->setOpacity(30);
 
@@ -37,7 +36,7 @@ bool ProphecyPanel::init(const std::string& text) {
 
 	shadow1->runAction(CCRepeatForever::create(sequence1));
 
-	auto shadow2 = ProphecySprite::create(spr, false);
+	auto shadow2 = ProphecySprite::create(sprite, false);
 	shadow2->setID("shadow-2");
 	shadow2->getPanel()->setOpacity(30);
 
@@ -63,7 +62,7 @@ bool ProphecyPanel::init(const std::string& text) {
 	label->setString(text.c_str()); // i need to set string after setting kerning
 
 	auto fancyLabel = ProphecySprite::create(label, true);
-	fancyLabel->setPositionY(spr->getContentHeight() - 5.0f); // CCClippingNode doesnt have a size so were using the sprite's
+	fancyLabel->setPositionY(sprite->getContentHeight() - 5.0f); // CCClippingNode doesnt have a size so were using the sprite's
 	fancyLabel->setID("fancy-label");
 
 	animated->addChild(evenMoreAnimatedInsideAnimated);
@@ -96,9 +95,9 @@ bool ProphecyPanel::init(const std::string& text) {
 	return true;
 }
 
-ProphecyPanel* ProphecyPanel::create(const std::string& text) {
+ProphecyPanel* ProphecyPanel::create(CCSprite* sprite, const std::string& text) {
 	auto ret = new ProphecyPanel();
-	if (ret && ret->init(text)) {
+	if (ret && ret->init(sprite, text)) {
 		ret->autorelease();
 		return ret;
 	}

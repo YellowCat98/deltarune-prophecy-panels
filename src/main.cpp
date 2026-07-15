@@ -13,7 +13,7 @@ class $modify(MyLoadingLayer, MenuLayer) {
 
 	void onMoreGames(CCObject* sender) {
 		auto scene = CCScene::create();
-		auto prophecy = DeltaruneProphecy::ProphecyPanel::create("THE FLOWER MAN,\nTRAPPED IN ASYLUM.");
+		auto prophecy = DeltaruneProphecy::ProphecyPanel::create(CCSprite::create("test_spr.png"_spr), "THE FLOWER MAN,\nTRAPPED IN ASYLUM.");
 		prophecy->setScale(4.0f);
 		prophecy->setPosition(CCDirector::get()->getWinSize()/2);
 

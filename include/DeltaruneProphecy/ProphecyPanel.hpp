@@ -5,8 +5,8 @@
 namespace DeltaruneProphecy {
 	class ProphecyPanel : public cocos2d::CCNode {
 	private:
-		bool init(const std::string& text);
+		bool init(cocos2d::CCSprite* sprite, const std::string& text);
 	public:
-		static ProphecyPanel* create(const std::string& text);
+		static ProphecyPanel* create(cocos2d::CCSprite* sprite, const std::string& text);
 	};
 }
