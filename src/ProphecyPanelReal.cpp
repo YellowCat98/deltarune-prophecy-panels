@@ -16,6 +16,8 @@ bool ProphecyPanelReal::init(bool text) {
 	ccTexParams params = { static_cast<GLuint>(text ? GL_NEAREST : GL_NEAREST), static_cast<GLuint>(text ? GL_NEAREST : GL_NEAREST), GL_REPEAT, GL_REPEAT };
 	texture->setTexParameters(&params);
 
+	if (text) scrollX = 20.0f;
+
 	this->scheduleUpdate();
 	return true;
 }
@@ -36,7 +38,7 @@ void ProphecyPanelReal::update(float dt) {
 
 void ProphecyPanelReal::draw() {
 	text ? this->setBlendFunc({GL_ONE, GL_ONE_MINUS_SRC_COLOR}) : this->setBlendFunc({GL_ONE, GL_ONE});
-	for (int i = 0; i < (text ? 6 : 3); ++i) {
+	for (int i = 0; i < (text ? 5 : 3); ++i) {
 		CCSprite::draw();
 	}
 }

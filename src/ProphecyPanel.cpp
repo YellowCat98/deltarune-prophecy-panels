@@ -15,7 +15,7 @@ bool ProphecyPanel::init(CCSprite* sprite, const std::string& text) {
 	animated->setID("animated");
 
 	auto evenMoreAnimatedInsideAnimated = CCNode::create();
-	evenMoreAnimatedInsideAnimated->setID("more-animaeted");
+	evenMoreAnimatedInsideAnimated->setID("more-animated");
 
 	auto params = ccTexParams{GL_NEAREST, GL_NEAREST, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE};
 	sprite->getTexture()->setTexParameters(&params);
