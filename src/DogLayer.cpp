@@ -7,9 +7,7 @@ using namespace geode::prelude;
 bool DogLayer::init() {
 	if (!CCLayerColor::init()) return false;
 	this->setKeypadEnabled(true);
-	this->setCascadeColorEnabled(true);
-	this->setCascadeOpacityEnabled(true);
-	this->setID("DogLayer"_spr);
+	this->setID("DogLayer");
 	this->setColor({0, 0, 0});
 	this->setOpacity(255);
 
@@ -24,6 +22,7 @@ bool DogLayer::init() {
 		sprite->removeFromParentAndCleanup(true);
 
 		this->loadProphecy();
+		this->fancierSetVisible(true);
 	});
 
 	this->addChild(sprite); // only go to the prophecy panel once its loaded and the only way to do that is by adding this somewhere (gets removes on load tho)
@@ -49,11 +48,7 @@ void DogLayer::fancierSetVisible(bool visible) {
 		opaqueLayer->setOpacity(255);
 		opaqueLayer->runAction(CCFadeOut::create(0.25f));
 		this->setVisible(true);
-	} else {
-		// here we can actually just fade doglayer out!
-		this->runAction(CCFadeOut::create(0.5f));
-		opaqueLayer->runAction(CCFadeOut::create(0.5f)); // son
-	}
+	} else this->setVisible(false);
 }
 
 DogLayer* DogLayer::create() {
