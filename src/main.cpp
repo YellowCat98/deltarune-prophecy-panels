@@ -1,8 +1,17 @@
+#include "Geode/loader/SettingV3.hpp"
 #include <Geode/Geode.hpp>
 #include <DogLayer.hpp>
 #include <globals.hpp>
 
 using namespace geode::prelude;
+
+$on_mod(Loaded) {
+	ButtonSettingPressedEventV3(Mod::get(), "buttons").listen([](auto buttonKey) {
+		if (buttonKey == "reload-btn") { // this is always gonna be true but just in case i decide to add a new button in the future
+			log::info("yo");
+		}
+	}).leak();
+}
 
 // globals are set and defined here
 

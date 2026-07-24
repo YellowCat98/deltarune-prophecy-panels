@@ -28,19 +28,24 @@
 		}
 	},
 	"settings": {
+		"buttons": {
+			"type": "button",
+			"buttons": {
+				"reload-btn": "Reload Prophecy"
+			}
+		},
 		"sprite": {
 			"type": "file",
 			"name": "Prophecy Sprite",
+			"description": "The sprite to use in the prophecy's image.",
 			"default": "{mod_resources_dir}/test_spr.png"
 		},
 		"text": {
 			"type": "string",
 			"default": "Dog",
-			"name": "Text",
+			"name": "Prophecy Text",
+			"description": "The text that shows up in the prophecy.",
 			"filter": "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ "
-		},
-		"btns": {
-			"type": "custom:btns"
 		}
 	}
 }
