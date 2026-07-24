@@ -32,6 +32,11 @@
 			"type": "file",
 			"name": "Prophecy Sprite",
 			"default": "{mod_resources_dir}/test_spr.png"
+		},
+		"text": {
+			"type": "string",
+			"default": "Dog",
+			"name": "Text"
 		}
 	}
 }

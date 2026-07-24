@@ -1,7 +1,7 @@
 # Deltarune Prophecy panels
 
 - A mod that adds the prophecy panels from Deltarune Chapter 4.
-- Replaces the loading screen with a panel of your choice.
+- Has a chance of showing a random prophecy panel of your choice when you switch menus. (You can just tap wherever to go the menu you actually wnat to)
 
 ## Credits
 - Couldn't be done without finding this [forum](https://www.spriters-resource.com/pc_computer/deltarune/asset/275345/) online.

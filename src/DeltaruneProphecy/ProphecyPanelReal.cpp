@@ -25,10 +25,12 @@ bool ProphecyPanelReal::init(bool text) {
 void ProphecyPanelReal::update(float dt) {
 	CCSprite::update(dt);
 
-    scrollX += 3.0f * dt;
-    if (!text) scrollY += 3.0f * dt;
-
 	auto rect = this->getTextureRect();
+	auto size = rect.size;
+
+    scrollX = fmodf(scrollX + 3.0f * dt, size.width);
+
+    if (!text) scrollY = fmodf(scrollY + 3.0f * dt, size.height);
 
 	rect.origin.x = -scrollX;
 	rect.origin.y = -scrollY;

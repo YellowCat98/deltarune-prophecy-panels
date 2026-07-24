@@ -9,7 +9,6 @@ bool ProphecySprite::init(CCNode* sprite, bool text) {
 	if (!CCClippingNode::init(sprite)) return false;
 	this->setAnchorPoint({0.5f, 0.5f});
 	this->setAlphaThreshold(0.5f);
-	
 
 	auto prophecyReal = ProphecyPanelReal::create(text);
 	this->addChild(prophecyReal);
