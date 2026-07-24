@@ -8,4 +8,5 @@ struct globals {
 	inline static DogLayer* dog;
 	inline static cocos2d::CCLayerColor* transitionLayer; // a desperate attempt at not wanting to handle color bs (the finale)
 	static std::string createProphecyText(const std::string& text); // just turns "hello#world" into "hello\nworld"
+	static void recreateDog();
 };

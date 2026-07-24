@@ -11,7 +11,6 @@ bool DogLayer::init() {
 	this->setOpacity(255);
 
 	sprite = LazySprite::create({0.0f, 0.0f}); // lazysprite handles le size
-	sprite->loadFromFile(Mod::get()->getSettingValue<std::filesystem::path>("sprite"));
 
 	sprite->setLoadCallback([this](Result<> res) {
 		if (res.isErr()) {
@@ -25,6 +24,8 @@ bool DogLayer::init() {
 	});
 
 	this->addChild(sprite); // only go to the prophecy panel once its loaded and the only way to do that is by adding this somewhere (gets removes on load tho)
+
+	sprite->loadFromFile(Mod::get()->getSettingValue<std::filesystem::path>("sprite"), {}, true);
 
 	opaqueLayer = CCLayerColor::create();
 	opaqueLayer->setZOrder(1);

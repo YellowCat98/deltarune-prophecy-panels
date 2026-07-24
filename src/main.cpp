@@ -8,12 +8,20 @@ using namespace geode::prelude;
 $on_mod(Loaded) {
 	ButtonSettingPressedEventV3(Mod::get(), "buttons").listen([](auto buttonKey) {
 		if (buttonKey == "reload-btn") { // this is always gonna be true but just in case i decide to add a new button in the future
-			log::info("yo");
+			globals::recreateDog();
 		}
 	}).leak();
 }
 
 // globals are set and defined here
+
+void globals::recreateDog() {
+	if (globals::dog && globals::modBullshit) {
+		globals::dog->removeFromParentAndCleanup(true);
+		globals::dog = DogLayer::create();
+		globals::modBullshit->addChild(globals::dog);
+	}
+}
 
 std::string globals::createProphecyText(const std::string& text) {
 	std::string ret = text;
