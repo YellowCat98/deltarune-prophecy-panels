@@ -4,6 +4,14 @@
 
 using namespace geode::prelude;
 
+// globals are set and defined here
+
+std::string globals::createProphecyText(const std::string& text) {
+	std::string ret = text;
+	std::ranges::replace(ret, '#', '\n');
+	return ret;
+}
+
 $on_game(Loaded) {
 	auto overlay = OverlayManager::get();
 	globals::modBullshit = CCNode::create();

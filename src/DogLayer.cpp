@@ -1,6 +1,3 @@
-#include "Geode/cocos/touch_dispatcher/CCTouch.h"
-#include "Geode/cocos/touch_dispatcher/CCTouchDispatcher.h"
-#include <DogLayer.hpp>
 #include <DeltaruneProphecy/ProphecyPanel.hpp>
 #include <globals.hpp>
 
@@ -38,8 +35,8 @@ bool DogLayer::init() {
 }
 
 void DogLayer::loadProphecy() {
-	auto prophecy = DeltaruneProphecy::ProphecyPanel::create(sprite, Mod::get()->getSettingValue<std::string>("text"));
-	prophecy->setScale(6.7f);
+	auto prophecy = DeltaruneProphecy::ProphecyPanel::create(sprite, globals::createProphecyText(Mod::get()->getSettingValue<std::string>("text")));
+	prophecy->setScale(6.0f);
 	prophecy->setPosition(CCDirector::get()->getWinSize()/2);
 
 	this->addChild(prophecy);

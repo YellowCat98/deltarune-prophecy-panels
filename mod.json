@@ -38,6 +38,9 @@
 			"default": "Dog",
 			"name": "Text",
 			"filter": "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ "
+		},
+		"btns": {
+			"type": "custom:btns"
 		}
 	}
 }
