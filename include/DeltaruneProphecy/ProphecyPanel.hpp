@@ -3,7 +3,7 @@
 #include <Geode/Geode.hpp>
 
 namespace DeltaruneProphecy {
-	class ProphecyPanel : public cocos2d::CCNode {
+	class ProphecyPanel : public cocos2d::CCNodeRGBA {
 	private:
 		bool init(cocos2d::CCSprite* sprite, const std::string& text);
 	public:

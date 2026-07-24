@@ -26,11 +26,11 @@ bool ProphecyPanelBG::init() {
 
 void ProphecyPanelBG::update(float dt) {
 	CCSprite::update(dt);
-	auto rect = this->getTextureRect();
-	auto size = rect.size;
 
-    scrollX = fmodf(scrollX + 5.0f * dt, size.width);
-    scrollY = fmodf(scrollY + 5.0f * dt, size.height);
+    scrollX += 5.0f * dt;
+    scrollY += 5.0f * dt;
+
+	auto rect = this->getTextureRect();
 
 	rect.origin.x = scrollX;
 	rect.origin.y = scrollY;

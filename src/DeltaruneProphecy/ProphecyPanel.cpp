@@ -7,8 +7,10 @@ using namespace geode::prelude;
 using namespace DeltaruneProphecy;
 
 bool ProphecyPanel::init(CCSprite* sprite, const std::string& text) {
-	if (!CCNode::init()) return false;
+	if (!CCNodeRGBA::init()) return false;
 	this->setAnchorPoint({0.5f, 0.5f});
+	this->setCascadeColorEnabled(true);
+	this->setCascadeOpacityEnabled(true);
 	float animationDuration = 1.25f;
 
 	auto animated = CCNode::create();

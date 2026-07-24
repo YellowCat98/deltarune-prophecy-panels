@@ -7,12 +7,13 @@
 using namespace geode::prelude;
 
 class $modify(AppDelegate) {
+	// the ultimate technique
+	// not touching the scene stack or hooking replaceScene and all that stuff!
 	void willSwitchToScene(CCScene* pScene) {
 		AppDelegate::willSwitchToScene(pScene);
-		if (globals::dog) globals::dog->setVisible(true);
+		if (globals::dog) globals::dog->fancierSetVisible(true);
 		async::spawn(arc::sleep(asp::Duration::fromSecs(5)), []() {
-			log::info("dog");
-			if (globals::dog) globals::dog->setVisible(false);
+			if (globals::dog) globals::dog->fancierSetVisible(false);
 		});
 	}
 };

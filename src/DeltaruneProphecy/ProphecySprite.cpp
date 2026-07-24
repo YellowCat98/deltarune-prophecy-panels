@@ -1,6 +1,7 @@
 #include <DeltaruneProphecy/ProphecySprite.hpp>
 #include <DeltaruneProphecy/ProphecyPanelBG.hpp>
 #include <DeltaruneProphecy/ProphecyPanelReal.hpp>
+#include <winspool.h>
 
 using namespace geode::prelude;
 using namespace DeltaruneProphecy;
