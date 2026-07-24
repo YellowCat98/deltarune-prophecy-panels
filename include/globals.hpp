@@ -3,6 +3,6 @@
 #include <DogLayer.hpp>
 
 struct globals {
-    inline static bool passNextScene;
-    inline static DogLayer* dog;
+	inline static bool passNextScene;
+	inline static DogLayer* dog;
 };

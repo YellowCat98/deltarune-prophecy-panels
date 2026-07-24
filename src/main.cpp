@@ -5,8 +5,8 @@
 using namespace geode::prelude;
 
 $on_game(Loaded) {
-    auto overlay = OverlayManager::get();
-    auto dog = DogLayer::create();
-    overlay->addChild(dog);
-    globals::dog = dog;
+	auto overlay = OverlayManager::get();
+	auto dog = DogLayer::create();
+	overlay->addChild(dog);
+	globals::dog = dog;
 }
