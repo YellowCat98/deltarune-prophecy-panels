@@ -12,7 +12,7 @@ class $modify(DogDelegate, AppDelegate) {
 	void willSwitchToScene(CCScene* pScene) {
 		AppDelegate::willSwitchToScene(pScene);
 		if (globals::dog) globals::dog->comeInVro();
-		async::spawn(arc::sleep(asp::Duration::fromMillis(2500)), [this]() {
+		async::spawn(arc::sleep(asp::Duration::fromSecs(120)), [this]() {
 			if (globals::dog) globals::dog->GETOUT();
 		});
 	}

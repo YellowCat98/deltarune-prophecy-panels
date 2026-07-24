@@ -36,7 +36,8 @@
 		"text": {
 			"type": "string",
 			"default": "Dog",
-			"name": "Text"
+			"name": "Text",
+			"filter": "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~ "
 		}
 	}
 }

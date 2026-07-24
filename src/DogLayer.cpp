@@ -1,3 +1,5 @@
+#include "Geode/cocos/touch_dispatcher/CCTouch.h"
+#include "Geode/cocos/touch_dispatcher/CCTouchDispatcher.h"
 #include <DogLayer.hpp>
 #include <DeltaruneProphecy/ProphecyPanel.hpp>
 #include <globals.hpp>
@@ -6,7 +8,7 @@ using namespace geode::prelude;
 
 bool DogLayer::init() {
 	if (!CCLayerColor::init()) return false;
-	this->setKeypadEnabled(true);
+	this->setTouchPriority(CCTouchDispatcher::get()->getTargetPrio() - 1);
 	this->setID("DogLayer");
 	this->setColor({0, 0, 0});
 	this->setOpacity(255);
@@ -45,6 +47,7 @@ void DogLayer::loadProphecy() {
 
 void DogLayer::comeInVro() {
 	if (isIn) return;
+	this->setTouchEnabled(true);
 	opaqueLayer->setOpacity(255);
 	opaqueLayer->runAction(CCFadeOut::create(0.25f));
 	this->setVisible(true);
@@ -53,6 +56,7 @@ void DogLayer::comeInVro() {
 
 void DogLayer::GETOUT() {
 	if (!isIn) return;
+	this->setTouchEnabled(false);
 	globals::transitionLayer->runAction(CCSequence::create(
 		CCFadeIn::create(0.25f),
 		CallFuncExt::create([] { globals::dog->setVisible(false); }),
@@ -60,6 +64,15 @@ void DogLayer::GETOUT() {
 		CallFuncExt::create([this] { isIn = false; }),
 		nullptr
 	));
+}
+
+bool DogLayer::ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent) {
+	this->GETOUT();
+	return true;
+}
+
+void DogLayer::registerWithTouchDispatcher() {
+	CCTouchDispatcher::get()->addTargetedDelegate(this, this->getTouchPriority(), true);
 }
 
 DogLayer* DogLayer::create() {
