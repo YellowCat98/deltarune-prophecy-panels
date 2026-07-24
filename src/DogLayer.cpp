@@ -22,7 +22,7 @@ bool DogLayer::init() {
 		sprite->removeFromParentAndCleanup(true);
 
 		this->loadProphecy();
-		this->fancierSetVisible(true);
+		this->comeInVro();
 	});
 
 	this->addChild(sprite); // only go to the prophecy panel once its loaded and the only way to do that is by adding this somewhere (gets removes on load tho)
@@ -43,12 +43,23 @@ void DogLayer::loadProphecy() {
 	this->addChild(prophecy);
 }
 
-void DogLayer::fancierSetVisible(bool visible) {
-	if (visible) {
-		opaqueLayer->setOpacity(255);
-		opaqueLayer->runAction(CCFadeOut::create(0.25f));
-		this->setVisible(true);
-	} else this->setVisible(false);
+void DogLayer::comeInVro() {
+	if (isIn) return;
+	opaqueLayer->setOpacity(255);
+	opaqueLayer->runAction(CCFadeOut::create(0.25f));
+	this->setVisible(true);
+	isIn = true;
+}
+
+void DogLayer::GETOUT() {
+	if (!isIn) return;
+	globals::transitionLayer->runAction(CCSequence::create(
+		CCFadeIn::create(0.25f),
+		CallFuncExt::create([] { globals::dog->setVisible(false); }),
+		CCFadeOut::create(0.25f),
+		CallFuncExt::create([this] { isIn = false; }),
+		nullptr
+	));
 }
 
 DogLayer* DogLayer::create() {

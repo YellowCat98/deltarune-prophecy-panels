@@ -9,8 +9,10 @@ private:
 	void loadProphecy();
 	geode::LazySprite* sprite;
 	cocos2d::CCLayerColor* opaqueLayer; // this only exists because i want to chang ProphecyPanel's opacity and unfortunately i am not gonna deal with it
+	bool isIn;
 public:
 	static DogLayer* create();
 
-	void fancierSetVisible(bool visible); // fancy!
+	void comeInVro();
+	void GETOUT();
 };

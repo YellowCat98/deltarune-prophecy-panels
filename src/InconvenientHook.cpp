@@ -11,18 +11,9 @@ class $modify(DogDelegate, AppDelegate) {
 	// not touching the scene stack or hooking replaceScene and all that stuff!
 	void willSwitchToScene(CCScene* pScene) {
 		AppDelegate::willSwitchToScene(pScene);
-		if (globals::dog) globals::dog->fancierSetVisible(true);
+		if (globals::dog) globals::dog->comeInVro();
 		async::spawn(arc::sleep(asp::Duration::fromMillis(2500)), [this]() {
-			if (globals::dog) {
-				globals::transitionLayer->runAction(CCSequence::create(
-					CCFadeIn::create(0.25f),
-					CallFuncExt::create([]() {
-						globals::dog->setVisible(false);
-					}),
-					CCFadeOut::create(0.25f),
-					nullptr
-				));
-			}
+			if (globals::dog) globals::dog->GETOUT();
 		});
 	}
 };
