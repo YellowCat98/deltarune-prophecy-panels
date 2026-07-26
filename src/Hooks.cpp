@@ -21,7 +21,6 @@ class $modify(DogDelegate, AppDelegate) {
 	// not touching the scene stack or hooking replaceScene and all that stuff!
 	void willSwitchToScene(CCScene* pScene) {
 		AppDelegate::willSwitchToScene(pScene);
-		if (pScene && pScene->getChildByID("LoadingLayer")) return; // i have absolutely no idea why willSwitchToScene is called with nullptr
 		if (globals::dog) globals::dog->comeInVro();
 		async::spawn(arc::sleep(asp::Duration::fromSecs(120)), [this]() {
 			if (globals::dog) globals::dog->GETOUT();
