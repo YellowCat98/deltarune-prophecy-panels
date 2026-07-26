@@ -8,28 +8,34 @@ using namespace geode::prelude;
 $on_mod(Loaded) {
 	ButtonSettingPressedEventV3(Mod::get(), "buttons").listen([](auto buttonKey) {
 		if (buttonKey == "reload-btn") { // this is always gonna be true but just in case i decide to add a new button in the future
-			globals::recreateDog();
+			globals::reinitMod();
 		}
 	}).leak();
 }
 
 // globals are set and defined here
 
-void globals::recreateDog() {
-	if (globals::dog && globals::modBullshit) {
+void globals::reinitMod() {
+	if (globals::dog && globals::modBullshit && globals::transitionLayer) {
+		globals::modBullshit->removeFromParentAndCleanup(true);
 		globals::dog->removeFromParentAndCleanup(true);
+		globals::transitionLayer->removeFromParentAndCleanup(true);
+
+		globals::modBullshit = CCNode::create();
+		globals::modBullshit->setID(""_spr);
+		OverlayManager::get()->addChild(globals::modBullshit);
+
 		globals::dog = DogLayer::create();
 		globals::modBullshit->addChild(globals::dog);
+
+		globals::transitionLayer = CCLayerColor::create();
+		globals::transitionLayer->setColor({0,0,0});
+		globals::transitionLayer->setID("transition-layer");
+		globals::modBullshit->addChild(globals::transitionLayer);
 	}
 }
 
-std::string globals::createProphecyText(const std::string& text) {
-	std::string ret = text;
-	std::ranges::replace(ret, '#', '\n');
-	return ret;
-}
-
-$on_game(Loaded) {
+void globals::initMod() {
 	auto overlay = OverlayManager::get();
 	globals::modBullshit = CCNode::create();
 	globals::modBullshit->setID(""_spr);
@@ -42,4 +48,14 @@ $on_game(Loaded) {
 	globals::transitionLayer->setColor({0,0,0});
 	globals::transitionLayer->setID("transition-layer");
 	globals::modBullshit->addChild(globals::transitionLayer);
+}
+
+std::string globals::createProphecyText(const std::string& text) {
+	std::string ret = text;
+	std::ranges::replace(ret, '#', '\n');
+	return ret;
+}
+
+$on_game(Loaded) {
+	globals::initMod();
 }
